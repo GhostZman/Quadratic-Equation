@@ -14,6 +14,13 @@
 		688DCD562B5B3788003E6EC0 /* Quadratic_EquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD552B5B3788003E6EC0 /* Quadratic_EquationTests.swift */; };
 		688DCD602B5B3788003E6EC0 /* Quadratic_EquationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD5F2B5B3788003E6EC0 /* Quadratic_EquationUITests.swift */; };
 		688DCD622B5B3788003E6EC0 /* Quadratic_EquationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD612B5B3788003E6EC0 /* Quadratic_EquationUITestsLaunchTests.swift */; };
+		688DCD6F2B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD6E2B5B37EF003E6EC0 /* Quadratic_Calculator.swift */; };
+		688DCD702B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD6E2B5B37EF003E6EC0 /* Quadratic_Calculator.swift */; };
+		688DCD712B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD6E2B5B37EF003E6EC0 /* Quadratic_Calculator.swift */; };
+		688DCD722B5B3806003E6EC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD452B5B3787003E6EC0 /* ContentView.swift */; };
+		688DCD732B5B3807003E6EC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD452B5B3787003E6EC0 /* ContentView.swift */; };
+		688DCD742B5B3809003E6EC0 /* Quadratic_EquationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD432B5B3787003E6EC0 /* Quadratic_EquationApp.swift */; };
+		688DCD752B5B3809003E6EC0 /* Quadratic_EquationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688DCD432B5B3787003E6EC0 /* Quadratic_EquationApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,7 @@
 		688DCD5B2B5B3788003E6EC0 /* Quadratic EquationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quadratic EquationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		688DCD5F2B5B3788003E6EC0 /* Quadratic_EquationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadratic_EquationUITests.swift; sourceTree = "<group>"; };
 		688DCD612B5B3788003E6EC0 /* Quadratic_EquationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadratic_EquationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		688DCD6E2B5B37EF003E6EC0 /* Quadratic_Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadratic_Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			children = (
 				688DCD432B5B3787003E6EC0 /* Quadratic_EquationApp.swift */,
 				688DCD452B5B3787003E6EC0 /* ContentView.swift */,
+				688DCD6E2B5B37EF003E6EC0 /* Quadratic_Calculator.swift */,
 				688DCD472B5B3788003E6EC0 /* Assets.xcassets */,
 				688DCD492B5B3788003E6EC0 /* Quadratic_Equation.entitlements */,
 				688DCD4A2B5B3788003E6EC0 /* Preview Content */,
@@ -260,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				688DCD462B5B3787003E6EC0 /* ContentView.swift in Sources */,
+				688DCD6F2B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */,
 				688DCD442B5B3787003E6EC0 /* Quadratic_EquationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688DCD702B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */,
 				688DCD562B5B3788003E6EC0 /* Quadratic_EquationTests.swift in Sources */,
+				688DCD742B5B3809003E6EC0 /* Quadratic_EquationApp.swift in Sources */,
+				688DCD722B5B3806003E6EC0 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688DCD752B5B3809003E6EC0 /* Quadratic_EquationApp.swift in Sources */,
 				688DCD602B5B3788003E6EC0 /* Quadratic_EquationUITests.swift in Sources */,
+				688DCD712B5B37EF003E6EC0 /* Quadratic_Calculator.swift in Sources */,
+				688DCD732B5B3807003E6EC0 /* ContentView.swift in Sources */,
 				688DCD622B5B3788003E6EC0 /* Quadratic_EquationUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,4 +5,47 @@
 //  Created by Phys440Zachary on 1/19/24.
 //
 
-import Foundation
+import SwiftUI
+import Observation
+
+@Observable class Quadratic_Calculator{
+    var a = 1.0
+    var b = 4.0
+    var c = 1.0
+    var normalPositive = 0.0
+    var normalNegative = 0.0
+    var abnormalPositive = 0.0
+    var abnormalNegative = 0.0
+    var enableButton = true
+    
+    func initWithVariables(inputa:Double, inputb:Double, inputc:Double) {
+        self.a = inputa
+        self.b = inputb
+        self.c = inputc
+    }
+    
+    
+    //                    __________
+    //                 | / 2
+    //         - b +/- |/ b  - 4 a c
+    //$$x    = ---------------------$$
+    //  1,2            2 a
+    func calculateNormal() {
+        
+    }
+    //    prime          - 2 c
+    //  $x      = ------------------$
+    //    1,2              __________
+    //                  | / 2
+    //            b +/- |/ b  - 4 a c
+
+
+    func calculateAbnormal() {
+        
+    }
+    
+    func calculateSolutions() {
+        
+    }
+    
+}
