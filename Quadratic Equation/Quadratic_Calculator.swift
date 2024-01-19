@@ -31,17 +31,18 @@ import Observation
     //$$x    = ---------------------$$
     //  1,2            2 a
     func calculateNormal() {
-        
+        normalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+        normalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
     }
+    
     //    prime          - 2 c
     //  $x      = ------------------$
     //    1,2              __________
     //                  | / 2
     //            b +/- |/ b  - 4 a c
-
-
     func calculateAbnormal() {
-        
+        abnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
+        abnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
     }
     
     func calculateSolutions() {
