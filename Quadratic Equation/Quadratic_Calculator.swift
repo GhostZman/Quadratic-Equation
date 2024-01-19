@@ -46,7 +46,8 @@ import Observation
     }
     
     func calculateSolutions() {
-        
+        calculateNormal()
+        calculateAbnormal()
     }
     
 }
