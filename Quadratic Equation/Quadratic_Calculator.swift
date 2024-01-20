@@ -30,10 +30,11 @@ import Observation
     //         - b +/- |/ b  - 4 a c
     //$$x    = ---------------------$$
     //  1,2            2 a
-    func calculateNormal() {
+    func calculateNormalPositive() async -> (Type: String, StringToDisplay: String, Value: Double) {
         normalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
         normalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
     }
+    
     
     //    prime          - 2 c
     //  $x      = ------------------$
@@ -46,8 +47,37 @@ import Observation
     }
     
     func calculateSolutions() {
-        calculateNormal()
-        calculateAbnormal()
+        Task{
+            await setButtonEnable(state:false)
+            let returnedResults = await withTaskGroup(
+                of: (Type: String, StringToDisplay: String, Value: Double).self,
+                body: { taskgroup in
+                    taskgroup.addTask{ let
+                        
+                    }
+                
+            })
+        }
+
+    }
+    @MainActor func setButtonEnable(state: Bool){
+        
+        if state {
+            Task.init {
+                await MainActor.run {
+                    
+                    
+                    self.enableButton = true
+                }
+            }
+        }
+        else{
+            Task.init {
+                await MainActor.run{
+                    self.enableButton = false
+                }
+            }
+        }
     }
     
 }
