@@ -31,8 +31,8 @@ import Observation
     //$$x    = ---------------------$$
     //  1,2            2 a
     func calculateNormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        let normalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
-        let normalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+        self.normalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+        self.normalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
 
         return (PositiveValue: normalPositive, NegativeValue: normalNegative)
     }
@@ -44,8 +44,8 @@ import Observation
     //                  | / 2
     //            b +/- |/ b  - 4 a c
     func calculateAbnormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        abnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
-        abnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
+        self.abnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
+        self.abnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
 
         return (PositiveValue: abnormalPositive, NegativeValue: abnormalNegative)
     }
@@ -60,12 +60,20 @@ import Observation
                         return normalResults
                     }
                     taskgroup.addTask{ let abnormalResults = await self.calculateAbnormal()
-                    
+                        return abnormalResults
                     }
-                
+                    var combinedTaskResults :[PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double]
+                    for await result in taskGroup{
+                        combinedTaskResults.append(result[0])
+                        combinedTaskResults.append(result[1])
+                    }
+                    return combinedTaskResults
             })
-        }
+            print(returnedResults)
 
+            await setButtonEnable(state: true)
+        }
+        return true
     }
     @MainActor func setButtonEnable(state: Bool){
         
