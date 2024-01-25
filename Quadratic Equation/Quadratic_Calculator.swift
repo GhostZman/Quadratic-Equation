@@ -62,7 +62,7 @@ import Observation
                     taskgroup.addTask{ let abnormalResults = await self.calculateAbnormal()
                         return abnormalResults
                     }
-                    var combinedTaskResults :[PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double]
+                    var combinedTaskResults :[PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double] = []
                     for await result in taskGroup{
                         combinedTaskResults.append(result[0])
                         combinedTaskResults.append(result[1])
