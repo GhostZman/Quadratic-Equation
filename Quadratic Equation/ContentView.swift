@@ -11,7 +11,7 @@ struct ContentView: View {
     @Bindable var myQuadraticCalculator = Quadratic_Calculator()
     @State var aString = "1.0"
     @State var bString = "1.0"
-    @State var cString = "1.0"
+    @State var cString = "0.1"
     var body: some View {
         VStack {
             HStack{
@@ -25,15 +25,15 @@ struct ContentView: View {
             HStack{
                 VStack{
                     Text("Normal Positive: ")
-                    Text("\(myQuadraticCalculator.normalPositive, specifier: "%.32f")")
+                    Text("\(myQuadraticCalculator.normalPositive, specifier: "%.20f")")
                     Text("Abnormal Positive: ")
-                    Text("\(myQuadraticCalculator.abnormalPositive, specifier: "%.32f")")
+                    Text("\(myQuadraticCalculator.abnormalPositive, specifier: "%.20f")")
                 }
                 VStack{
                     Text("Normal Negative: ")
-                    Text("\(myQuadraticCalculator.normalNegative, specifier: "%.32f")")
+                    Text("\(myQuadraticCalculator.normalNegative, specifier: "%.20f")")
                     Text("Abnormal Negative: ")
-                    Text("\(myQuadraticCalculator.abnormalNegative, specifier: "%.32f")")
+                    Text("\(myQuadraticCalculator.abnormalNegative, specifier: "%.20f")")
                 }
             }
             Button("Calculate", action: {self.calculate()})
