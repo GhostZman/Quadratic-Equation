@@ -50,11 +50,14 @@ import Observation
         return (PositiveValue: abnormalPositive, NegativeValue: abnormalNegative)
     }
     
-    func calculateSolutions() {
+    func calculateSolutions() -> Bool{
+        
+        
         Task{
-            await setButtonEnable(state:false)
+            await setButtonEnable(state: false)
             let returnedResults = await withTaskGroup(
                 of: (PositiveValue: Double, NegativeValue: Double).self,
+                returning: [PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double].self,
                 body: { taskgroup in
                     taskgroup.addTask{ let normalResults = await self.calculateNormal()
                         return normalResults
@@ -69,7 +72,6 @@ import Observation
                     }
                     return combinedTaskResults
             })
-            print(returnedResults)
 
             await setButtonEnable(state: true)
         }
