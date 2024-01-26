@@ -31,10 +31,12 @@ import Observation
     //$$x    = ---------------------$$
     //  1,2            2 a
     func calculateNormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        self.normalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
-        self.normalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+        let calculatedNormalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+        let calculatedNormalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
 
-        return (PositiveValue: normalPositive, NegativeValue: normalNegative)
+        await updateNormalValues(positiveValue: calculatedNormalPositive, negativeValue: calculatedNormalNegative)
+        
+        return (PositiveValue: calculatedNormalPositive, NegativeValue: calculatedNormalNegative)
     }
     
     
@@ -44,10 +46,12 @@ import Observation
     //                  | / 2
     //            b +/- |/ b  - 4 a c
     func calculateAbnormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        self.abnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
-        self.abnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
+        let calculatedAbnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
+        let calculatedAbnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
+        
+        await updateAbnormalValues(positiveValue: calculatedAbnormalPositive, negativeValue: calculatedAbnormalNegative)
 
-        return (PositiveValue: abnormalPositive, NegativeValue: abnormalNegative)
+        return (PositiveValue: calculatedAbnormalPositive, NegativeValue: calculatedAbnormalNegative)
     }
     
     func calculateSolutions() -> Bool{
@@ -96,5 +100,12 @@ import Observation
             }
         }
     }
-    
+    @MainActor func updateNormalValues(positiveValue: Double, negativeValue: Double){
+        self.normalPositive = positiveValue
+        self.normalNegative = negativeValue
+    }
+    @MainActor func updateAbnormalValues(positiveValue: Double, negativeValue: Double){
+        self.abnormalPositive = positiveValue
+        self.abnormalNegative = negativeValue
+    }
 }
