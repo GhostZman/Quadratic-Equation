@@ -30,9 +30,9 @@ import Observation
     //         - b +/- |/ b  - 4 a c
     //$$x    = ---------------------$$
     //  1,2            2 a
-    func calculateNormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        let calculatedNormalPositive =  (-b+sqrt(pow(b, 2)-(4*a*c)))/(2*a)
-        let calculatedNormalNegative =  (-b-sqrt(pow(b, 2)-(4*a*c)))/(2*a)
+    func calculateNormal(ain: Double, bin: Double, cin: Double) async -> (PositiveValue: Double, NegativeValue: Double) {
+        let calculatedNormalPositive =  (-bin+sqrt(pow(bin, 2)-(4*ain*cin)))/(2*ain)
+        let calculatedNormalNegative =  (-bin-sqrt(pow(bin, 2)-(4*ain*cin)))/(2*ain)
 
         await updateNormalValues(positiveValue: calculatedNormalPositive, negativeValue: calculatedNormalNegative)
         
@@ -45,9 +45,9 @@ import Observation
     //    1,2              __________
     //                  | / 2
     //            b +/- |/ b  - 4 a c
-    func calculateAbnormal() async -> (PositiveValue: Double, NegativeValue: Double) {
-        let calculatedAbnormalPositive = (-2*c)/(b+sqrt(pow(b, 2)-(4*a*c)))
-        let calculatedAbnormalNegative = (-2*c)/(b-sqrt(pow(b, 2)-(4*a*c)))
+    func calculateAbnormal(ain: Double, bin: Double, cin: Double) async -> (PositiveValue: Double, NegativeValue: Double) {
+        let calculatedAbnormalPositive = (-2*cin)/(bin+sqrt(pow(bin, 2)-(4*ain*cin)))
+        let calculatedAbnormalNegative = (-2*cin)/(bin-sqrt(pow(bin, 2)-(4*ain*cin)))
         
         await updateAbnormalValues(positiveValue: calculatedAbnormalPositive, negativeValue: calculatedAbnormalNegative)
 
@@ -63,10 +63,10 @@ import Observation
                 of: (PositiveValue: Double, NegativeValue: Double).self,
                 returning: [(PositiveValue: Double, NegativeValue: Double)].self,
                 body: { taskgroup in
-                    taskgroup.addTask{ let normalResults = await self.calculateNormal()
+                    taskgroup.addTask{ let normalResults = await self.calculateNormal(ain: self.a, bin: self.b, cin: self.c)
                         return normalResults
                     }
-                    taskgroup.addTask{ let abnormalResults = await self.calculateAbnormal()
+                    taskgroup.addTask{ let abnormalResults = await self.calculateAbnormal(ain: self.a, bin: self.b, cin: self.c)
                         return abnormalResults
                     }
                     var combinedTaskResults :[(PositiveValue: Double, NegativeValue: Double)] = []
