@@ -38,6 +38,11 @@ struct ContentView: View {
             }
             Button("Calculate", action: {self.calculate()})
                 .disabled(myQuadraticCalculator.enableButton == false)
+            
+            Text("Most Precice Solutions:")
+            Text("\(myQuadraticCalculator.abnormalPositive, specifier: "%.20e")")
+            Text("\(myQuadraticCalculator.normalNegative, specifier: "%.20e")")
+            
         }
         .padding()
     }
