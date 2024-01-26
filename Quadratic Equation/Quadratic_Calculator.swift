@@ -61,7 +61,7 @@ import Observation
             await setButtonEnable(state: false)
             let returnedResults = await withTaskGroup(
                 of: (PositiveValue: Double, NegativeValue: Double).self,
-                returning: [PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double].self,
+                returning: [(PositiveValue: Double, NegativeValue: Double)].self,
                 body: { taskgroup in
                     taskgroup.addTask{ let normalResults = await self.calculateNormal()
                         return normalResults
@@ -69,14 +69,16 @@ import Observation
                     taskgroup.addTask{ let abnormalResults = await self.calculateAbnormal()
                         return abnormalResults
                     }
-                    var combinedTaskResults :[PositiveNormal: Double, NegativeNormal: Double, PositiveAbnormal: Double, NegativeAbnormal: Double] = []
-                    for await result in taskGroup{
-                        combinedTaskResults.append(result[0])
-                        combinedTaskResults.append(result[1])
+                    var combinedTaskResults :[(PositiveValue: Double, NegativeValue: Double)] = []
+                    for await result in taskgroup{
+                        combinedTaskResults.append(result)
                     }
                     return combinedTaskResults
             })
-
+            let sortedCombinedResults = returnedResults.sorted(by: { $0.0 < $1.0})
+            print(returnedResults)
+            print(sortedCombinedResults)
+            
             await setButtonEnable(state: true)
         }
         return true
