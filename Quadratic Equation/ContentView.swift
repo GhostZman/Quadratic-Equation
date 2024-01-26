@@ -25,15 +25,15 @@ struct ContentView: View {
             HStack{
                 VStack{
                     Text("Normal Positive: ")
-                    Text("\(myQuadraticCalculator.normalPositive)")
+                    Text("\(myQuadraticCalculator.normalPositive, specifier: "%.32f")")
                     Text("Abnormal Positive: ")
-                    Text("\(myQuadraticCalculator.abnormalPositive)")
+                    Text("\(myQuadraticCalculator.abnormalPositive, specifier: "%.32f")")
                 }
                 VStack{
                     Text("Normal Negative: ")
-                    Text("\(myQuadraticCalculator.normalNegative)")
+                    Text("\(myQuadraticCalculator.normalNegative, specifier: "%.32f")")
                     Text("Abnormal Negative: ")
-                    Text("\(myQuadraticCalculator.abnormalNegative)")
+                    Text("\(myQuadraticCalculator.abnormalNegative, specifier: "%.32f")")
                 }
             }
             Button("Calculate", action: {self.calculate()})

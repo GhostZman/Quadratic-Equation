@@ -23,7 +23,7 @@ import Observation
         self.b = inputb
         self.c = inputc
         
-        return true
+        return self.calculateSolutions()
     }
     
     
