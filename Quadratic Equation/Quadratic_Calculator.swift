@@ -85,6 +85,11 @@ import Observation
         }
         return true
     }
+    
+    func calculateMostPrecise() -> (positiveValue: Double, negativeValue: Double){
+        _ = self.calculateSolutions()
+        return (self.abnormalPositive, self.normalNegative)
+    }
     @MainActor func setButtonEnable(state: Bool){
         
         if state {
