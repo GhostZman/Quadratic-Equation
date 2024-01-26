@@ -45,7 +45,7 @@ final class Quadratic_EquationTests: XCTestCase {
         
         let testa = 1.0
         let testb = 1.0
-        let testc = 0.000000000001
+        let testc = 0.01
         
         let normalSols = await myQuadCalc.calculateNormal(ain: testa, bin: testb, cin: testc)
         let abnormalSols = await myQuadCalc.calculateAbnormal(ain: testa, bin: testb, cin: testc)

@@ -18,10 +18,12 @@ import Observation
     var abnormalNegative = 0.0
     var enableButton = true
     
-    func initWithVariables(inputa:Double, inputb:Double, inputc:Double) {
+    func initWithVariables(inputa:Double, inputb:Double, inputc:Double) -> Bool {
         self.a = inputa
         self.b = inputb
         self.c = inputc
+        
+        return true
     }
     
     
