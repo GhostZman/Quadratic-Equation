@@ -18,6 +18,40 @@ final class Quadratic_EquationTests: XCTestCase {
     }
     func testNormal() async {
         let myQuadCalc = Quadratic_Calculator()
+        
+        let testa = 1.0
+        let testb = 1.0
+        let testc = 0.0001
+        
+        let normalSols = await myQuadCalc.calculateNormal(ain: testa, bin: testb, cin: testc)
+
+        XCTAssertEqual(normalSols.PositiveValue, -1.0001E-4, accuracy:1.0E-7, "Was not equal to this resolution.")
+        XCTAssertEqual(normalSols.NegativeValue, -0.9998, accuracy:1.0E-4, "Was not equal to this resolution.")
+    }
+    func testAbnormal() async {
+        let myQuadCalc = Quadratic_Calculator()
+        
+        let testa = 1.0
+        let testb = 1.0
+        let testc = 0.0001
+        
+        let abnormalSols = await myQuadCalc.calculateAbnormal(ain: testa, bin: testb, cin: testc)
+
+        XCTAssertEqual(abnormalSols.PositiveValue, -1.0001E-4, accuracy:1.0E-7, "Was not equal to this resolution.")
+        XCTAssertEqual(abnormalSols.NegativeValue, -0.9998, accuracy:1.0E-4, "Was not equal to this resolution.")
+    }
+    func testEqual() async {
+        let myQuadCalc = Quadratic_Calculator()
+        
+        let testa = 1.0
+        let testb = 1.0
+        let testc = 0.000000000001
+        
+        let normalSols = await myQuadCalc.calculateNormal(ain: testa, bin: testb, cin: testc)
+        let abnormalSols = await myQuadCalc.calculateAbnormal(ain: testa, bin: testb, cin: testc)
+        
+        XCTAssertEqual(abnormalSols.PositiveValue, normalSols.PositiveValue, accuracy:1.0E-7, "Was not equal to this resolution.")
+        XCTAssertEqual(abnormalSols.NegativeValue, normalSols.NegativeValue, accuracy:1.0E-7, "Was not equal to this resolution.")
     }
     func testExample() throws {
         // This is an example of a functional test case.
